@@ -10,22 +10,22 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
+- powershell: |
+    Write-Host "This works: $env:MONGODB_URI_LOCAL"
+    Write-Host "This works: $env:SESSION_SECRET"
+    Write-Host "This works: $env:FACEBOOK_SECRET"
   env:
     MONGODB_URI_LOCAL: $(MONGODB_URI_LOCAL)
     SESSION_SECRET: $(SESSION_SECRET)
     FACEBOOK_ID: $(FACEBOOK_ID)
     FACEBOOK_SECRET: $(FACEBOOK_SECRET)
-    process.env.MY_VAR: 'Hello'
 
-- bash: echo 'ECHO MY VARIABLE'
-- bash: echo $(FACEBOOK_ID)
-- bash: echo $(process.env.MY_VAR)
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
 
-- script: |
+- script:
     npm install
     npm test
   displayName: 'npm install and test'
