@@ -30,7 +30,11 @@ const app = express();
 const mongoUrl = MONGODB_URI;
 mongoose.Promise = bluebird;
 
-mongoose.connect(mongoUrl, {useNewUrlParser: true, dbName: "dump_test"} ).then(
+mongoose.connect(mongoUrl, {
+    useNewUrlParser: true, 
+    reconnectTries: Number.MAX_VALUE,
+    dbName: "dump_test"
+}).then(
     () => { /** ready to use. The `mongoose.connect()` promise resolves to undefined. */ },
 ).catch(err => {
     console.log("MongoDB connection error. Please make sure MongoDB is running. " + err);
