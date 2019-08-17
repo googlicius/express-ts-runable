@@ -14,12 +14,13 @@ steps:
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
+  env:
+    MONGODB_URI_LOCAL: $(MONGODB_URI_LOCAL)
+    SESSION_SECRET: $(SESSION_SECRET)
+    FACEBOOK_ID: $(FACEBOOK_ID)
+    FACEBOOK_SECRET: $(FACEBOOK_SECRET)
 
 - script:
     npm install
-    MONGODB_URI_LOCAL=$(MONGODB_URI_LOCAL)
-    SESSION_SECRET=$(SESSION_SECRET)
-    FACEBOOK_ID=$(FACEBOOK_ID)
-    FACEBOOK_SECRET=$(FACEBOOK_SECRET)
     npm test
   displayName: 'npm install and test'
