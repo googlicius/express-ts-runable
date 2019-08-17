@@ -9,16 +9,20 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+variables:
+  MONGODB_URI_LOCAL: $(MONGODB_URI_LOCAL)
+  SESSION_SECRET: $(SESSION_SECRET)
+  FACEBOOK_ID: $(FACEBOOK_ID)
+  FACEBOOK_SECRET: $(FACEBOOK_SECRET)
+
 steps:
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
-  env:
-    MONGODB_URI_LOCAL: $(MONGODB_URI_LOCAL)
-    SESSION_SECRET: $(SESSION_SECRET)
-    FACEBOOK_ID: $(FACEBOOK_ID)
-    FACEBOOK_SECRET: $(FACEBOOK_SECRET)
+
+- bash: echo 'ECHO MY VARIABLE'
+- bash: echo $(MONGODB_URI_LOCAL)
 
 - script: |
     npm install
