@@ -6,6 +6,12 @@
 trigger:
 - master
 
+variables:
+  MONGODB_URI_LOCAL: $(MONGODB_URI_LOCAL)
+  SESSION_SECRET: $(SESSION_SECRET)
+  FACEBOOK_ID: $(FACEBOOK_ID)
+  FACEBOOK_SECRET: $(FACEBOOK_SECRET)
+
 pool:
   vmImage: 'ubuntu-latest'
 
