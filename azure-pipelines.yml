@@ -19,13 +19,15 @@ steps:
     SESSION_SECRET: $(SESSION_SECRET)
     FACEBOOK_ID: $(FACEBOOK_ID)
     FACEBOOK_SECRET: $(FACEBOOK_SECRET)
-    process.env.MY_VAR: 'Hello'
 
 - bash: echo 'ECHO MY VARIABLE'
 - bash: echo $(FACEBOOK_ID)
-- bash: echo $(process.env.MY_VAR)
 
 - script: |
     npm install
+    echo %MONGODB_URI_LOCAL% env: MONGODB_URI_LOCAL: $(MONGODB_URI_LOCAL)
+    echo %SESSION_SECRET% env: SESSION_SECRET: $(SESSION_SECRET)
+    echo %FACEBOOK_ID% env: FACEBOOK_ID: $(FACEBOOK_ID)
+    echo %FACEBOOK_SECRET% env: FACEBOOK_SECRET: $(FACEBOOK_SECRET)
     npm test
   displayName: 'npm install and test'
