@@ -1,6 +1,8 @@
 import logger from "./logger";
 require("dotenv").config();
 
+console.log("FABOOK_ID", process.env.FACEBOOK_ID);
+
 export const ENVIRONMENT = process.env.NODE_ENV;
 const prod = ENVIRONMENT === "production"; // Anything else is treated as 'dev'
 
