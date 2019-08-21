@@ -9,6 +9,7 @@ app.use(errorHandler());
 
 /**
  * Start Express server.
+ * Start server
  */
 const server = app.listen(app.get("port"), () => {
     console.log(
