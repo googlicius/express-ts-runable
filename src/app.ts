@@ -109,7 +109,7 @@ app.post("/account/password", passportConfig.isAuthenticated, userController.pos
 app.post("/account/delete", passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get("/account/unlink/:provider", passportConfig.isAuthenticated, userController.getOauthUnlink);
 app.get("/show-name", (req) => {
-    console.log("Hello", req.get("name"));
+    console.log("Hello there,", req.get("name"));
 });
 
 /**
